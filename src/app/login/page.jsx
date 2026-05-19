@@ -10,7 +10,11 @@ import { redirect } from "next/navigation";
 
 const LoginPage = () => {
   const [showPassword, setShowPassword] = useState(false);
-
+     const handleGoogle=async()=>{
+        const data = await authClient.signIn.social({
+        provider: "google",
+     });
+     }
   const handleSubmit =async (e) => {
     e.preventDefault();
     const formData= new FormData(e.currentTarget);
@@ -87,7 +91,7 @@ const LoginPage = () => {
           </div>
 
           {/* Google Button */}
-          <Button type="button" className="w-full bg-gray-50 hover:bg-gray-100 text-gray-700 font-semibold py-3 rounded-xl border border-gray-200 transition-colors flex items-center justify-center gap-2 text-base">
+          <Button onClick={handleGoogle} type="button" className="w-full bg-gray-50 hover:bg-gray-100 text-gray-700 font-semibold py-3 rounded-xl border border-gray-200 transition-colors flex items-center justify-center gap-2 text-base">
             <FcGoogle className="text-xl" />
             Continue with Google
           </Button>
