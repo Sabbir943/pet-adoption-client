@@ -5,7 +5,7 @@ export default function DashboardLayout({ children }) {
   return (
     <div className="flex flex-col md:flex-row gap-6 ">
       {/* বামে বা ওপরে থাকবে সাইডবার মেনু min-h-[calc(100vh-160px)] */}
-      <aside className="w-full md:w-64 bg-base-200/50 p-4 rounded-2xl border border-base-200 h-fit sticky top-24">
+      <aside className="w-full md:w-64  p-4 rounded-2xl border border-base-200 h-fit sticky top-24">
         <h2 className="text-lg font-bold px-4 mb-4 text-primary">Menu</h2>
         <ul className="menu w-full gap-1 p-0 font-medium">
           
@@ -16,7 +16,7 @@ export default function DashboardLayout({ children }) {
       </aside>
 
       {/* ড্যাশবোর্ডের নির্দিষ্ট পেজের কনটেন্ট এখানে রেন্ডার হবে */}
-      <section className="flex-1 bg-base-100 p-6 rounded-2xl border border-base-200 shadow-sm">
+      <section className="flex-1  p-6 rounded-2xl border border-base-200 shadow-sm">
         {children}
       </section>
     </div>
