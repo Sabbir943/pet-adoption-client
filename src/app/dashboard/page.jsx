@@ -1,12 +1,11 @@
-
-import Dash from '@/component/Dash';
-
 import React from 'react';
 
-const DashBoard = () => {
+const DashboardPage = () => {
     return (
-        <Dash/>
+        <div>
+            <h1>hello</h1>
+        </div>
     );
 };
 
-export default DashBoard;
+export default DashboardPage;

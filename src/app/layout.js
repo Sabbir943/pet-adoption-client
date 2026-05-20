@@ -29,15 +29,11 @@ export default function RootLayout({ children }) {
         <Provider>
           <NavBar />
           
-           {children}
+         <main className="grow container mx-auto px-4 py-8">
+        {children}
+      </main>
 
-          {/* <main className=""> */}
-            {/* <Dash/> */}
-            {/* <div className=""> */}
-            
-            {/* </div> */}
-            
-          {/* </main> */}
+         
           <Footer/>
           <Toaster />
         </Provider>
