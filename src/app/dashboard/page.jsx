@@ -1,9 +1,14 @@
+'use client'
+import { useRouter } from 'next/navigation';
 import React from 'react';
 
 const DashboardPage = () => {
+    const router= useRouter();
     return (
         <div>
-            <h1>hello  heloo</h1>
+           {
+            router.push('dashboard/add-pets')
+           }
         </div>
     );
 };
