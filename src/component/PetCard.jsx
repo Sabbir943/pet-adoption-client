@@ -4,7 +4,7 @@ import Link from 'next/link';
 const PetCard = ({pet}) => {
     return (
         <div
-            key={pet._id}
+           
             className="group relative rounded-[2.5rem] bg-foreground/3 dark:bg-zinc-900/40 backdrop-blur-md border border-foreground/[0.08] p-5 flex flex-col justify-between transition-all duration-500 hover:-translate-y-2 hover:border-pink-500/20 hover:shadow-[0_20px_50px_rgba(236,72,153,0.05)]"
           >
             <div>

@@ -37,10 +37,10 @@ const NavBar = () => {
 
       {/* Navigation */}
       <div className="font-semibold flex gap-6 text-foreground/80">
-        <Link className="flex items-center gap-2 hover:text-pink-500 transition-colors" href="/home">
+        <Link  className="flex items-center gap-2 hover:text-pink-500 transition-colors" href="/home">
           <FaHome /> Home
         </Link>
-        <Link className="flex items-center gap-2 hover:text-pink-500 transition-colors" href="/pets">
+        <Link className="flex items-center gap-2 hover:text-pink-500 transition-colors" href="/allPets">
           <MdOutlinePets /> All Pets
         </Link>
       </div>
