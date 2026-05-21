@@ -2,6 +2,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
 import DeleteDialog from './DeleteDialog';
+import EditModal from './EditModal';
 
 const ListingCard = ({data}) => {
    
@@ -18,7 +19,7 @@ const ListingCard = ({data}) => {
             className="group relative rounded-[2.5rem] bg-foreground/2 dark:bg-zinc-900/40 backdrop-blur-md border border-foreground/[0.08] p-5 flex flex-col justify-between transition-all duration-500 hover:-translate-y-1.5 hover:border-foreground/20"
           >
             <div>
-              {/* Pet Image */}
+             
               <div className="relative w-full aspect-4/3 rounded-[1.8rem] overflow-hidden bg-foreground/5 mb-5">
                 <Image
                   src={pet.image || "https://images.unsplash.com/photo-1543466835-00a7907e9de1"}
@@ -28,7 +29,7 @@ const ListingCard = ({data}) => {
                   unoptimized
                 />
                 
-                {/* Adoption Fee Status Badge */}
+               
                 <div className="absolute top-4 right-4 bg-background/90 backdrop-blur-md text-pink-500 font-black text-xs px-3 py-1.5 rounded-xl border border-foreground/[0.05]">
                   {pet.adoptionFee === 0 || pet.adoptionFee === '0' ? 'Free' : `${pet.adoptionFee} BDT`}
                 </div>
@@ -45,11 +46,11 @@ const ListingCard = ({data}) => {
               </div>
             </div>
 
-            {/* 🛠️ Comprehensive Action Buttons */}
+            
             <div className="space-y-2.5 px-1">
-              {/* Row 1: Requests & Edit */}
+             
               <div className="grid grid-cols-2 gap-2.5">
-                {/* Requests Button */}
+               
                 <button
                  
                   className="bg-pink-500/10 text-pink-500 border border-pink-500/20 font-bold text-xs py-3 rounded-xl transition-all duration-200 hover:bg-pink-500 hover:text-white active:scale-[0.97]"
@@ -58,12 +59,7 @@ const ListingCard = ({data}) => {
                 </button>
 
 
-                {/* Edit Button (Navigates to Update Page) */}
-                <Link href={`/`} className="w-full">
-                  <button className="w-full bg-foreground/4 dark:bg-zinc-800/50 text-foreground border border-foreground/10 font-bold text-xs py-3 rounded-xl transition-all duration-200 hover:bg-foreground hover:text-background active:scale-[0.97]">
-                    Edit
-                  </button>
-                </Link>
+               <EditModal petData={pet} />
               </div>
 
              

@@ -1,12 +1,11 @@
 import React from 'react';
 
-const MyRequest = () => {
+const page = () => {
     return (
         <div>
-            <h1>This is my page</h1>
-            
+            <p>This is my request page</p>
         </div>
     );
 };
 
-export default MyRequest;
+export default page;

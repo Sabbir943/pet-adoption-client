@@ -1,7 +1,8 @@
 "use client";
 import React from "react";
-// আপনার দেওয়া হুবহু অফিশিয়াল ইমপোর্ট
+
 import { AlertDialog, Button } from "@heroui/react";
+import toast from "react-hot-toast";
 
 const DeleteDialog = ({ petData }) => {
   
@@ -16,8 +17,7 @@ const DeleteDialog = ({ petData }) => {
       
       const result = await res.json();
       console.log("Deleted successfully:", result);
-      
-      // ডিলিট হওয়ার পর ইনস্ট্যান্ট পেজ আপডেট করতে রিলোড দিতে পারেন
+      toast.success("Successfully-removed!!")
       window.location.reload();
     } catch (error) {
       console.error("Error deleting pet:", error);
@@ -26,14 +26,14 @@ const DeleteDialog = ({ petData }) => {
 
   return (
     <AlertDialog>
-      {/* ১ নম্বর নিয়ম: প্রথম চাইল্ড অবশ্যই হিরোইউ-এর <Button> হতে হবে, তবেই ডায়ালগ ওপেন হবে */}
+    
       <Button
         className="w-full bg-red-500/10 text-red-500 border border-red-500/20 font-bold text-xs py-3 rounded-xl transition-all duration-200 hover:bg-red-500 hover:text-white active:scale-[0.97]"
       >
         Delete
       </Button>
 
-      {/* আপনার অফিশিয়াল গাইডলাইনের ডট নোটেশন স্ট্রাকচার */}
+      
       <AlertDialog.Backdrop>
         <AlertDialog.Container>
           <AlertDialog.Dialog className="sm:max-w-100 bg-background border border-foreground/10 rounded-2xl p-6">
@@ -53,7 +53,7 @@ const DeleteDialog = ({ petData }) => {
             </AlertDialog.Body>
             
             <AlertDialog.Footer className="mt-6 flex justify-end gap-2">
-              {/* slot="close" দেওয়ার কারণে এই বাটনে চাপ দিলে ডায়ালগ বন্ধ হয়ে যাবে */}
+             
               <Button slot="close" variant="secondary">
                 Cancel
               </Button>

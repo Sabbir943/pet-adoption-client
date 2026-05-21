@@ -1,122 +1,77 @@
-'use client';
-
-import React, { useState } from 'react';
-import toast from 'react-hot-toast';
+"use client";
+import React, { useState } from "react";
+import toast from "react-hot-toast";
 
 const AdoptionForm = ({ pet, user }) => {
-  const [loading, setLoading] = useState(false);
+  const [pickupDate, setPickupDate] = useState("");
+  const [message, setMessage] = useState("");
+
+  const isAdopted = pet?.status?.toLowerCase() === "adopted";
 
   const handleAdoptSubmit = async (e) => {
     e.preventDefault();
-    setLoading(true);
+    if (isAdopted) {
+      toast.error("This pet has already been adopted.");
+      return;
+    }
 
-    const formData = new FormData(e.target);
-
-    const adoptionData = {
+    const adoptionRequestData = {
       petId: pet._id,
       petName: pet.petName,
-      petImage: pet.image,
       userName: user?.name,
       userEmail: user?.email,
-      pickupDate: formData.get('pickupDate'),
-      message: formData.get('message'),
-      status: 'pending',
-      createdAt: new Date(),
+      ownerEmail: pet.ownerEmail,
+      pickupDate,
+      message,
+      status: "Pending",
     };
 
     try {
-      const response = await fetch('http://localhost:8000/myRequest', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(adoptionData),
+      const res = await fetch(`http://localhost:8000/myRequest`, {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify(adoptionRequestData),
       });
+      const result = await res.json();
 
-      if (response.ok) {
-        toast.success(`Adoption request for ${pet.petName} submitted successfully! 🎉`);
-        e.target.reset(); // ফর্মটি ক্লিয়ার করার জন্য
+      if (res.ok && !result.error) {
+        toast.success("Adoption request submitted successfully! 🎉");
+        setPickupDate("");
+        setMessage("");
       } else {
-        toast.error('Something went wrong. Please try again.');
+        toast.error(result.error || "Failed to submit request.");
       }
     } catch (error) {
-      console.error('Error submitting form:', error);
-      toast.error('Failed to connect to the server.');
-    } finally {
-      setLoading(false);
+      toast.error("Server connection failed.");
     }
   };
 
   return (
-    <div className="rounded-[2.5rem] bg-foreground/[0.02] dark:bg-zinc-900/40 backdrop-blur-xl border border-foreground/[0.08] p-6 md:p-8 shadow-2xl">
-      <div className="mb-6">
-        <h2 className="text-2xl font-black text-foreground tracking-tight">Bring {pet.petName} Home</h2>
-        <p className="text-xs text-foreground/50 mt-1 font-medium">Fill out the adoption request form below.</p>
-      </div>
-
-      <form onSubmit={handleAdoptSubmit} className="space-y-4">
-        {/* Pet Name (Read Only) */}
+    <div className="bg-white dark:bg-zinc-900 border border-foreground/10 rounded-[2rem] p-6 shadow-xl space-y-4">
+      <h3 className="text-lg font-black text-foreground tracking-tight">🏡 Request Adoption</h3>
+      <form onSubmit={handleAdoptSubmit} className="space-y-3 text-foreground">
         <div>
-          <label className="block text-[11px] font-bold text-foreground/50 uppercase tracking-wider mb-1.5 ml-1">Pet Name</label>
-          <input
-            type="text"
-            value={pet.petName}
-            readOnly
-            className="w-full bg-foreground/[0.04] dark:bg-zinc-800/40 border border-foreground/[0.05] rounded-2xl px-4 py-3.5 text-sm font-black text-foreground/60 outline-none cursor-not-allowed"
-          />
+          <label className="block text-[10px] font-bold text-foreground/50 uppercase mb-0.5">Pet Name</label>
+          <input type="text" value={pet?.petName || ""} readOnly className="w-full px-4 py-2 rounded-xl bg-foreground/5 text-foreground/60 border border-foreground/5 text-xs font-bold cursor-not-allowed"/>
+        </div>
+        <div>
+          <label className="block text-[10px] font-bold text-foreground/50 uppercase mb-0.5">Applicant Email</label>
+          <input type="text" value={user?.email || ""} readOnly className="w-full px-4 py-2 rounded-xl bg-foreground/5 text-foreground/60 border border-foreground/5 text-xs font-bold cursor-not-allowed"/>
+        </div>
+        <div>
+          <label className="block text-[10px] font-bold text-foreground/60 uppercase mb-0.5">Target Pickup Date *</label>
+          <input type="date" required value={pickupDate} onChange={(e) => setPickupDate(e.target.value)} className="w-full px-4 py-2 rounded-xl bg-background border border-foreground/10 text-xs font-medium focus:border-pink-500 outline-none"/>
+        </div>
+        <div>
+          <label className="block text-[10px] font-bold text-foreground/60 uppercase mb-0.5">Message to Owner *</label>
+          <textarea rows="3" required value={message} onChange={(e) => setMessage(e.target.value)} placeholder="Why do you want to adopt?..." className="w-full px-4 py-2 rounded-xl bg-background border border-foreground/10 text-xs focus:border-pink-500 outline-none resize-none"></textarea>
         </div>
 
-        {/* User Name (Read Only) */}
-        <div>
-          <label className="block text-[11px] font-bold text-foreground/50 uppercase tracking-wider mb-1.5 ml-1">Your Name</label>
-          <input
-            type="text"
-            value={user?.name || ''}
-            readOnly
-            className="w-full bg-foreground/[0.04] dark:bg-zinc-800/40 border border-foreground/[0.05] rounded-2xl px-4 py-3.5 text-sm font-bold text-foreground/60 outline-none cursor-not-allowed"
-          />
-        </div>
-
-        {/* User Email (Read Only) */}
-        <div>
-          <label className="block text-[11px] font-bold text-foreground/50 uppercase tracking-wider mb-1.5 ml-1">Your Email</label>
-          <input
-            type="email"
-            value={user?.email || ''}
-            readOnly
-            className="w-full bg-foreground/[0.04] dark:bg-zinc-800/40 border border-foreground/[0.05] rounded-2xl px-4 py-3.5 text-sm font-bold text-foreground/60 outline-none cursor-not-allowed"
-          />
-        </div>
-
-        {/* Pickup Date */}
-        <div>
-          <label className="block text-[11px] font-bold text-foreground/50 uppercase tracking-wider mb-1.5 ml-1">Target Pickup Date</label>
-          <input
-            type="date"
-            name="pickupDate"
-            required
-            className="w-full bg-background dark:bg-zinc-950 border border-foreground/10 rounded-2xl px-4 py-3.5 text-sm font-bold text-foreground outline-none focus:border-pink-500/50 transition-colors text-foreground/70"
-          />
-        </div>
-
-        {/* Message */}
-        <div>
-          <label className="block text-[11px] font-bold text-foreground/50 uppercase tracking-wider mb-1.5 ml-1">Why do you want to adopt?</label>
-          <textarea
-            name="message"
-            required
-            rows={3}
-            placeholder="Tell us a bit about your home or pet experience..."
-            className="w-full bg-background dark:bg-zinc-950 border border-foreground/10 rounded-2xl px-4 py-3.5 text-sm font-medium text-foreground placeholder:text-foreground/30 outline-none focus:border-pink-500/50 transition-colors resize-none"
-          />
-        </div>
-
-        {/* Adopt Button */}
-        <button
-          type="submit"
-          disabled={loading}
-          className="w-full bg-foreground text-background font-black text-sm py-4 rounded-2xl transition-all duration-300 hover:bg-pink-500 hover:text-white active:scale-[0.99] shadow-lg mt-2 disabled:opacity-50 disabled:cursor-not-allowed"
-        >
-          {loading ? 'Submitting Request...' : 'Submit Adoption Request'}
-        </button>
+        {isAdopted ? (
+          <button type="button" disabled className="w-full bg-zinc-400 text-white font-bold py-2.5 rounded-xl cursor-not-allowed text-xs uppercase">Already Adopted</button>
+        ) : (
+          <button type="submit" className="w-full bg-pink-500 hover:bg-pink-600 text-white font-bold py-2.5 rounded-xl transition-all text-xs uppercase tracking-wide shadow-md">Submit Application</button>
+        )}
       </form>
     </div>
   );
