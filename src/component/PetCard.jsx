@@ -20,7 +20,7 @@ const PetCard = ({pet}) => {
                 />
                 
                 {/* Custom Adoption Fee Badge */}
-                <div className="absolute top-4 right-4 bg-background/90 backdrop-blur-md text-pink-500 font-black text-xs px-3.5 py-2 rounded-2xl border border-foreground/[0.05] shadow-sm">
+                <div className="absolute top-4 right-4 bg-background/90 backdrop-blur-md text-pink-500 font-black text-md px-3.5 py-2 rounded-2xl border border-foreground/[0.05] shadow-sm">
                   {pet.adoptionFee === 0 || pet.adoptionFee === '0' ? 'Free Adoption' : `${pet.adoptionFee} BDT`}
                 </div>
               </div>

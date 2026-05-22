@@ -37,7 +37,7 @@ const petDetails = async ({ params }) => {
               className="object-cover"
               unoptimized
             />
-            <div className="absolute top-6 left-6 bg-background/80 backdrop-blur-md text-pink-500 font-black text-xs px-4 py-2 rounded-2xl border border-foreground/[0.05]">
+            <div className="absolute top-6 left-6 bg-background/80 backdrop-blur-md text-pink-500 font-black text-md px-4 py-2 rounded-2xl border border-foreground/[0.05]">
               {pet.adoptionFee === 0 || pet.adoptionFee === '0' ? 'Free Adoption' : `${pet.adoptionFee} BDT`}
             </div>
           </div>
@@ -51,7 +51,7 @@ const petDetails = async ({ params }) => {
                   📍 {pet.location || 'Dhaka, Bangladesh'}
                 </p>
               </div>
-              <span className={`text-xs font-black px-4 py-2 rounded-2xl border ${
+              <span className={`text-md font-black px-4 py-2 rounded-2xl border ${
                 pet.gender === 'Male' 
                   ? 'bg-blue-500/10 text-blue-500 border-blue-500/20' 
                   : 'bg-pink-500/10 text-pink-500 border-pink-500/20'

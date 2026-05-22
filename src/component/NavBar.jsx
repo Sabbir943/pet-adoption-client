@@ -101,7 +101,7 @@ const NavBar = () => {
             <ul tabIndex={0} className="dropdown-content menu bg-background border border-foreground/10 rounded-2xl z-[50] w-56 p-2 shadow-xl flex flex-col gap-1 mt-2">
               <li className="px-3 py-2 flex flex-col items-start border-b border-foreground/5 mb-1">
                 <span className="font-bold text-sm text-foreground">{user?.name}</span>
-                <span className="text-xs text-foreground/60 truncate w-full" title={user?.email}>
+                <span className="text-md text-foreground/60 truncate w-full" title={user?.email}>
                   {user?.email}
                 </span>
               </li>

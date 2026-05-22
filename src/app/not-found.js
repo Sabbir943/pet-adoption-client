@@ -38,7 +38,7 @@ const NotFoundPage = () => {
             </div>
 
             {/* Decorative bottom element matching the brand flavor */}
-            <div className="mt-16 text-gray-400 text-xs tracking-wider uppercase font-semibold">
+            <div className="mt-16 text-gray-400 text-md tracking-wider uppercase font-semibold">
                 Lost Pet Care Network
             </div>
         </section>

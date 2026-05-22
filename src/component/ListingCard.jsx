@@ -41,7 +41,7 @@ const ListingCard = ({ data }) => {
                   unoptimized
                 />
 
-                <div className="absolute top-4 right-4 bg-background/90 text-pink-500 text-xs px-3 py-1 rounded-xl">
+                <div className="absolute top-4 right-4 bg-background/90 text-pink-500 text-md px-3 py-1 rounded-xl">
                   {pet.adoptionFee === 0 || pet.adoptionFee === '0'
                     ? 'Free'
                     : `${pet.adoptionFee} BDT`}
@@ -54,7 +54,7 @@ const ListingCard = ({ data }) => {
                 <h3 className="text-2xl font-black truncate">
                   {pet.petName}
                 </h3>
-                <p className="text-xs text-foreground/40">
+                <p className="text-md text-foreground/40">
                   Breed: {pet.breed || 'Mixed'}
                 </p>
               </div>
@@ -69,7 +69,7 @@ const ListingCard = ({ data }) => {
                       setSelectedPet(pet._id);
                       setOpenModal(true);
                     }}
-                    className="bg-pink-500 text-white text-xs py-3 rounded-xl font-bold"
+                    className="bg-pink-500 text-white text-md py-3 rounded-xl font-bold"
                   >
                     Requests
                   </button>
@@ -81,7 +81,7 @@ const ListingCard = ({ data }) => {
                 <div className="grid grid-cols-2 gap-2.5">
 
                   <Link href={`/pet/${pet._id}`}>
-                    <button className="w-full bg-foreground text-background text-xs py-3 rounded-xl font-bold">
+                    <button className="w-full bg-foreground text-background text-md py-3 rounded-xl font-bold">
                       View
                     </button>
                   </Link>

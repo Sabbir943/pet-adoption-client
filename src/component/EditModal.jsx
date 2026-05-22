@@ -28,7 +28,7 @@ const EditModal = ({ petData }) => {
   return (
     <Modal>
       <Modal.Trigger>
-        <button className="w-full bg-foreground/4 dark:bg-zinc-800/50 text-foreground border border-foreground/10 font-bold text-xs py-3 rounded-xl transition-all duration-200 hover:bg-foreground hover:text-background active:scale-[0.97]">
+        <button className="w-full bg-foreground/4 dark:bg-zinc-800/50 text-foreground border border-foreground/10 font-bold text-md py-3 rounded-xl transition-all duration-200 hover:bg-foreground hover:text-background active:scale-[0.97]">
           Edit
         </button>
       </Modal.Trigger>

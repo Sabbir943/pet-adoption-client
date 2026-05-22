@@ -17,7 +17,7 @@ const FeaturedPet = async () => {
       
       {/* Section Header */}
       <div className="text-center md:text-left mb-14">
-        <div className="flex items-center justify-center md:justify-start gap-2 text-pink-500 font-bold text-xs tracking-widest uppercase mb-3">
+        <div className="flex items-center justify-center md:justify-start gap-2 text-pink-500 font-bold text-md tracking-widest uppercase mb-3">
           <span className="w-2 h-2 rounded-full bg-pink-500 animate-pulse"></span>
           Meet Our Stars 🐾
         </div>
