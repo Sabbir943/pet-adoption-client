@@ -1,6 +1,6 @@
 "use client";
 import { useState } from "react";
-import { Button, Form, Input, TextField, Label, FieldError } from "@heroui/react";
+import { Button, Form, Input, TextField, Label, FieldError, Description } from "@heroui/react";
 import Link from "next/link";
 import { FcGoogle } from "react-icons/fc";
 import EyeTog from "@/component/EyeTog";
@@ -34,14 +34,15 @@ const SignUpPage = () => {
 
     if(data){
         
-        toast.success("Sucessfully Created Account!!");
+        toast.success("Sucessfully Created the Account!!");
         redirect('/login')
     }
     if(error){
-        toast.error("Invaild user!");
+        toast.error("Please CareFully fill the form!");
     }
     if (user.password !== user.confirmPassword) {
       setPasswordError("Passwords do not match");
+      
       return;
     }
 
@@ -100,7 +101,20 @@ const SignUpPage = () => {
           </TextField>
 
           {/* Password */}
-          <TextField isRequired name="password" type={showPassword ? "text" : "password"} className="w-full">
+          <TextField isRequired name="password" type={showPassword ? "text" : "password"}   maxLength={6}
+            validate={(value) => {
+          if (value.length < 6) {
+            return "Password must be at least 6 characters";
+          }
+          if (!/[A-Z]/.test(value)) {
+            return "Password must contain at least one uppercase letter";
+          }
+          if (!/[0-9]/.test(value)) {
+            return "Password must contain at least one number";
+          }
+          return null;
+        }}
+          className="w-full">
             <Label className="text-gray-700 font-semibold mb-1 block">
               Password <span className="text-pink-500">*</span>
             </Label>
@@ -109,13 +123,14 @@ const SignUpPage = () => {
                 placeholder="••••••••"
                 className="w-full rounded-xl border border-gray-200 px-4 py-2 pr-10 text-gray-800 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-pink-300"
               />
+               <Description>Must be at least 6 characters with 1 uppercase and 1 number</Description>
               <EyeTog onToggle={setShowPassword} />
             </div>
             <FieldError className="text-red-500 text-sm mt-1" />
           </TextField>
 
           {/* Confirm Password */}
-          <TextField isRequired name="confirmPassword" type={showConfirm ? "text" : "password"} className="w-full">
+          <TextField isRequired name="confirmPassword" type={showConfirm ? "text" : "password"}  className="w-full">
             <Label className="text-gray-700 font-semibold mb-1 block">
               Confirm Password <span className="text-pink-500">*</span>
             </Label>

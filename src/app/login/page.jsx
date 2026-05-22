@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
 import EyeTog from "@/component/EyeTog";
-import { Button, Form, Input, TextField, Label, FieldError } from "@heroui/react";
+import { Button, Form, Input, TextField, Label, FieldError, Description } from "@heroui/react";
 import Link from "next/link";
 import { FcGoogle } from "react-icons/fc";
 import { authClient } from "@/lib/auth-client";
@@ -64,7 +64,20 @@ const LoginPage = () => {
           </TextField>
 
           {/* Password */}
-          <TextField isRequired name="password" type={showPassword ? "text" : "password"} className="w-full">
+          <TextField isRequired name="password" maxLength={6}
+           validate={(value) => {
+          if (value.length < 6) {
+            return "Password must be at least 8 characters";
+          }
+          if (!/[A-Z]/.test(value)) {
+            return "Password must contain at least one uppercase letter";
+          }
+          if (!/[0-9]/.test(value)) {
+            return "Password must contain at least one number";
+          }
+          return null;
+        }}
+          type={showPassword ? "text" : "password"} className="w-full">
             <Label className="text-gray-700 font-semibold mb-1 block">
               Password <span className="text-pink-500">*</span>
             </Label>
@@ -73,6 +86,7 @@ const LoginPage = () => {
                 placeholder="••••••••"
                 className="w-full rounded-xl border border-gray-200 px-4 py-2 pr-10 text-gray-800 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-pink-300"
               />
+               <Description>Must be at least 6 characters with 1 uppercase and 1 number</Description>
               <EyeTog onToggle={setShowPassword} />
             </div>
             <FieldError className="text-red-500 text-sm mt-1" />
