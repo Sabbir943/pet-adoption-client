@@ -65,7 +65,7 @@ const PetCard = ({pet}) => {
             {/* View Details Button */}
             <div className="mt-6 px-1">
               <Link href={`/petDetails/${pet._id}`} className="block w-full">
-                <button className="w-full bg-foreground text-background font-black text-sm py-4 rounded-2xl transition-all duration-300 hover:bg-pink-500 hover:text-white active:scale-[0.98] shadow-lg shadow-foreground/5 hover:shadow-pink-500/20">
+                <button className="hover:cursor-pointer w-full bg-foreground text-background font-black text-sm py-4 rounded-2xl transition-all duration-300 hover:bg-pink-500 hover:text-white active:scale-[0.98] shadow-lg shadow-foreground/5 hover:shadow-pink-500/20">
                   View Details
                 </button>
               </Link>

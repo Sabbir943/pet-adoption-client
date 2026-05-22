@@ -28,7 +28,7 @@ const DeleteDialog = ({ petData }) => {
     <AlertDialog>
     
       <Button
-        className="w-full bg-red-500/10 text-red-500 border border-red-500/20 font-bold text-md py-3 rounded-xl transition-all duration-200 hover:bg-red-500 hover:text-white active:scale-[0.97]"
+        className="w-full bg-foreground text-background text-md py-6 rounded-xl font-bold"
       >
         Delete
       </Button>

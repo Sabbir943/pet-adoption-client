@@ -113,12 +113,15 @@ const NavBar = () => {
                 </Link>
               </li>
               <li>
-                <Button 
+                <Link href={'/'}>
+                  <Button 
                   onClick={handleLogOut} 
                   className="w-full flex gap-2 items-center justify-start bg-red-500/10 hover:bg-red-500 text-red-500 hover:text-white rounded-xl font-medium transition-all"
                 > 
                   <CiLogout className="text-lg" /> LogOut
                 </Button>
+                </Link>
+              
               </li>
             </ul>
           </div>

@@ -1,11 +1,11 @@
-import { auth } from '@/lib/auth';
-import { headers } from 'next/headers';
 import React from 'react';
 import Image from 'next/image';
-import AdoptionForm from '@/component/AdoptionForm';
+import Link from 'next/link';
+import { Button } from '@heroui/react';
 
 
-const petDetails = async ({ params }) => {
+
+const OwnerView = async ({ params }) => {
   const { id } = await params;
 
   // ১. Fetch Pet Data from MongoDB
@@ -15,10 +15,7 @@ const petDetails = async ({ params }) => {
   const pet = await res.json();
 
   // ২. Fetch User Session
-  const session = await auth.api.getSession({
-    headers: await headers()
-  });
-  const user = session?.user;
+ 
 
   return (
     <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-16 py-12 bg-transparent min-h-screen">
@@ -30,12 +27,12 @@ const petDetails = async ({ params }) => {
           {/* Main Image Container */}
           <div className="relative w-full aspect-[16/10] rounded-[2.5rem] overflow-hidden bg-foreground/5 shadow-2xl border border-foreground/[0.08]">
             <Image
-              src={pet.image}
+              src={pet.image || "https://images.unsplash.com/photo-1543466835-00a7907e9de1"}
               alt={pet.petName}
               fill
-              
+              priority
               className="object-cover"
-              
+              unoptimized
             />
             <div className="absolute top-6 left-6 bg-background/80 backdrop-blur-md text-pink-500 font-black text-md px-4 py-2 rounded-2xl border border-foreground/[0.05]">
               {pet.adoptionFee === 0 || pet.adoptionFee === '0' ? 'Free Adoption' : `${pet.adoptionFee} BDT`}
@@ -88,13 +85,60 @@ const petDetails = async ({ params }) => {
 
         {/* RIGHT COLUMN: Sticky Adoption Form (5 Columns) */}
         <div className="lg:col-span-5 lg:sticky lg:top-24">
-          {/* ক্লায়েন্ট কম্পোনেন্টে ডেটা পাস করা হলো */}
-          <AdoptionForm pet={pet} user={user} />
-        </div>
+  <div className="bg-white border border-gray-100 rounded-[2rem] p-6 shadow-md space-y-6">
+    
+    {/* Header Section */}
+    <div className="flex items-center gap-3 border-b border-gray-50 pb-4">
+      <span className="text-2xl">🏡</span>
+      <div>
+        <span className="text-gray-400 text-xs font-bold tracking-wider uppercase block">
+          Your Listing
+        </span>
+        <h3 className="text-xl font-black text-[#0B2C3D]">
+          Pet Management
+        </h3>
+      </div>
+    </div>
+
+    {/* Elegant Notice Alert Box */}
+    <div className="bg-blue-50/70 border border-blue-200/60 rounded-2xl p-5 flex gap-3.5">
+      <span className="text-2xl mt-0.5">ℹ️</span>
+      <div className="space-y-1">
+        <h4 className="font-bold text-blue-950 text-md">
+          You are the owner!
+        </h4>
+        
+      </div>
+    </div>
+
+    {/* Disabled Primary Action Button */}
+    <button 
+      disabled 
+      className="w-full bg-gray-100 text-gray-400 font-extrabold py-4 px-6 rounded-xl text-md cursor-not-allowed text-center transition-all"
+    >
+      🔒 Adoption Disabled for Owner
+    </button>
+
+    {/* Owner Dashboard Actions */}
+    <div className="space-y-3 pt-2">
+     
+      
+      <Link href="/dashboard/my-listings" className="block w-full">
+        <Button 
+          className="w-full font-bold text-md py-6 rounded-xl border border-gray-200 bg-gray-50 hover:bg-gray-100 text-gray-700" 
+          variant="bordered"
+        >
+          Back to Mylisiting
+        </Button>
+      </Link>
+    </div>
+
+  </div>
+</div>
 
       </div>
     </main>
   );
 };
 
-export default petDetails;
+export default OwnerView;

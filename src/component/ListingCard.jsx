@@ -69,7 +69,7 @@ const ListingCard = ({ data }) => {
                       setSelectedPet(pet._id);
                       setOpenModal(true);
                     }}
-                    className="bg-pink-500 text-white text-md py-3 rounded-xl font-bold"
+                    className="bg-pink-500 hover:cursor-pointer text-white text-md py-3 rounded-xl font-bold"
                   >
                     Requests
                   </button>
@@ -80,8 +80,8 @@ const ListingCard = ({ data }) => {
 
                 <div className="grid grid-cols-2 gap-2.5">
 
-                  <Link href={`/pet/${pet._id}`}>
-                    <button className="w-full bg-foreground text-background text-md py-3 rounded-xl font-bold">
+                  <Link href={`/dashboard/my-listings/${pet._id}`}>
+                    <button className="hover:cursor-pointer w-full bg-foreground text-background text-md py-3 rounded-xl font-bold">
                       View
                     </button>
                   </Link>
