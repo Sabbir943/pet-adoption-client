@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 const Footer = () => {
   return (
-    // bg-zinc-950 এবং text-zinc-400 ব্যবহার করার ফলে থিম চেঞ্জ হলেও ফুটার রিভার্স হবে না
+    
     <footer className="bg-zinc-950 text-zinc-400 px-6 md:px-16 py-16 border-t border-zinc-900 mt-auto">
       <div className="max-w-7xl mx-auto">
         <div className="mb-12">
@@ -15,9 +15,9 @@ const Footer = () => {
           </p>
         </div>
 
-        {/* Grid Section */}
+        
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-10">
-          {/* Newsletter */}
+        
           <div className="space-y-3">
             <h3 className="text-white font-bold text-sm tracking-wider">NEWSLETTER</h3>
             <p className="text-sm text-zinc-400">
@@ -38,13 +38,13 @@ const Footer = () => {
             <h3 className="text-white font-bold text-sm tracking-wider mb-4">QUICK LINKS</h3>
             <ul className="space-y-2 text-sm">
               <li className="hover:text-white transition-colors"><Link href="/home">Home</Link></li>
-              <li className="hover:text-white transition-colors"><Link href="/pets">Adopt Pets</Link></li>
-              <li className="hover:text-white transition-colors"><Link href="/dashboard">My Listings</Link></li>
+              <li className="hover:text-white transition-colors"><Link href="/allPets">Adopt Pets</Link></li>
+              <li className="hover:text-white transition-colors"><Link href="/dashboard/my-listings">My Listings</Link></li>
               <li className="hover:text-white transition-colors"><Link href="/dashboard">Dashboard</Link></li>
             </ul>
           </div>
 
-          {/* Support */}
+          
           <div>
             <h3 className="text-white font-bold text-sm tracking-wider mb-4">SUPPORT</h3>
             <ul className="space-y-2 text-sm">
@@ -55,7 +55,7 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* Contact */}
+          
           <div>
             <h3 className="text-white font-bold text-sm tracking-wider mb-4">CONTACT US</h3>
             <ul className="space-y-2 text-sm text-zinc-400">
@@ -66,7 +66,7 @@ const Footer = () => {
           </div>
         </div>
 
-        {/* Bottom Section */}
+        
         <div className="border-t border-zinc-900 mt-12 pt-6 flex flex-col sm:flex-row justify-between items-center text-xs">
           <p>© 2026 PawNest. All rights reserved.</p>
 

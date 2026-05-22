@@ -31,10 +31,10 @@ export default function RootLayout({ children }) {
           
          <main className="grow container mx-auto">
         {children}
-      </main>
-
-         
+        </main>
           <Footer/>
+         
+        
           <Toaster />
         </Provider>
       </body>

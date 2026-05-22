@@ -8,10 +8,18 @@ import ThemeSwitch from "./ThemeSwitch";
 import { authClient } from "@/lib/auth-client";
 import toast from "react-hot-toast";
 import { FaHome } from "react-icons/fa";
-import { MdOutlinePets, MdOutlineDashboard } from "react-icons/md";
+import { MdOutlinePets, MdOutlineDashboard, MdRequestPage } from "react-icons/md";
 import { CiLogout } from "react-icons/ci";
+import { usePathname } from "next/navigation";
+import { IoAddCircleOutline } from "react-icons/io5";
 
 const NavBar = () => {
+    const pathname = usePathname();
+
+  const activeClass = (path) =>
+    pathname === path
+      ? 'text-pink-500'
+      : 'text-foreground/80 hover:text-pink-500';
   const handleLogOut = async () => {
     await authClient.signOut();
     toast.success("Logged out successfully!!");
@@ -36,14 +44,40 @@ const NavBar = () => {
       </div>
 
       {/* Navigation */}
-      <div className="font-semibold flex gap-6 text-foreground/80">
-        <Link  className="flex items-center gap-2 hover:text-pink-500 transition-colors" href="/home">
-          <FaHome /> Home
-        </Link>
-        <Link className="flex items-center gap-2 hover:text-pink-500 transition-colors" href="/allPets">
-          <MdOutlinePets /> All Pets
-        </Link>
-      </div>
+     
+       <div className="font-semibold flex gap-6 text-foreground/80">
+      <Link
+        href="/home"
+        className={`flex items-center gap-2 transition-colors ${activeClass('/home')}`}
+      >
+        <FaHome />
+        Home
+      </Link>
+
+      <Link
+        href="/allPets"
+        className={`flex items-center gap-2 transition-colors ${activeClass('/allPets')}`}
+      >
+        <MdOutlinePets />
+        All Pets
+      </Link>
+
+      <Link
+        href="/dashboard/my-request"
+        className={`flex items-center gap-2 transition-colors ${activeClass('/dashboard/my-request')}`}
+      >
+        <MdRequestPage />
+        My Request
+      </Link>
+
+      <Link
+        href="/dashboard/add-pets"
+        className={`flex items-center gap-2 transition-colors ${activeClass('/dashboard/add-pets')}`}
+      >
+        <IoAddCircleOutline />
+        Add Pets
+      </Link>
+    </div>
 
       {/* Right Side Controls */}
       <div className="flex items-center gap-4">

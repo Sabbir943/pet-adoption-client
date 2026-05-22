@@ -150,7 +150,7 @@ const Banner = () => {
                     variants={imageVariants}
                     initial={false}
                     animate={isActive ? "visible" : "hidden"}
-                    className="relative w-[380px] h-[380px]"
+                    className="relative w-95 h-95"
                   >
                     <Image
                       src={slide.image}
