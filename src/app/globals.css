@@ -6,3 +6,17 @@
   --accent: oklch(0.7 0.25 260);
   --success: oklch(0.65 0.15 155);
 }
+.custom-swiper-pagination .swiper-pagination-bullet {
+  background: currentColor !important;
+  opacity: 0.2;
+  width: 8px;
+  height: 8px;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.custom-swiper-pagination .swiper-pagination-bullet-active {
+  background: #ec4899 !important;
+  opacity: 1;
+  width: 24px !important;
+}
