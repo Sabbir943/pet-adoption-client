@@ -8,7 +8,7 @@ const DeleteDialog = ({ petData }) => {
   
   const handleDelete = async () => {
     try {
-      const res = await fetch(`http://localhost:8000/addPets/${petData?._id}`, {
+      const res = await fetch(`http://localhost:8000/pet/${petData?._id}`, {
         method: 'DELETE',
         headers: {
           'content-type': 'application/json'

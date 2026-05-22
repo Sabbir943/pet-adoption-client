@@ -23,11 +23,11 @@ const AdoptionForm = ({ pet, user }) => {
       ownerEmail: pet.ownerEmail,
       pickupDate,
       message,
-      status: "Pending",
+     status: "pending"
     };
 
     try {
-      const res = await fetch(`http://localhost:8000/myRequest`, {
+      const res = await fetch(`http://localhost:8000/request`, {
         method: "POST",
         headers: { "content-type": "application/json" },
         body: JSON.stringify(adoptionRequestData),

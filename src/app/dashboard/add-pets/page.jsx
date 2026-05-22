@@ -10,7 +10,7 @@ const AddPetDashboardPage = async () => {
   });
   const currentUser = session?.user;
 
-  // সেশন না থাকলে সিকিউর প্রোটেকশন লগইন পেজে রিডাইরেক্ট করবে
+  
   if (!currentUser) {
     redirect('/login');
   }

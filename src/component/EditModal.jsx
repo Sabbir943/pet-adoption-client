@@ -10,7 +10,7 @@ const EditModal = ({ petData }) => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
     const Updatedata = Object.fromEntries(formData.entries());
-    const res = await fetch(`http://localhost:8000/addPets/${petData._id}`, {
+    const res = await fetch(`http://localhost:8000/pet/${petData._id}`, {
       method: 'PATCH',
       headers: {
         'content-type': 'application/json'

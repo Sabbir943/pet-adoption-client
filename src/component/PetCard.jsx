@@ -8,7 +8,7 @@ const PetCard = ({pet}) => {
             className="group relative rounded-[2.5rem] bg-foreground/3 dark:bg-zinc-900/40 backdrop-blur-md border border-foreground/[0.08] p-5 flex flex-col justify-between transition-all duration-500 hover:-translate-y-2 hover:border-pink-500/20 hover:shadow-[0_20px_50px_rgba(236,72,153,0.05)]"
           >
             <div>
-              {/* Image Container with Aspect Ratio */}
+             
               <div className="relative w-full aspect-4/3 rounded-[1.8rem] overflow-hidden bg-foreground/5 mb-5">
                 <Image
                   src={pet.image || "https://images.unsplash.com/photo-1543466835-00a7907e9de1"}

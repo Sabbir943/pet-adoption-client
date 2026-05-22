@@ -9,7 +9,7 @@ const petDetails = async ({ params }) => {
   const { id } = await params;
 
   // ১. Fetch Pet Data from MongoDB
-  const res = await fetch(`http://localhost:8000/addPets/${id}`, {
+  const res = await fetch(`http://localhost:8000/pet/${id}`, {
     cache: 'no-store'
   });
   const pet = await res.json();
