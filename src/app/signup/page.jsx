@@ -101,7 +101,7 @@ const SignUpPage = () => {
           </TextField>
 
           {/* Password */}
-          <TextField isRequired name="password" type={showPassword ? "text" : "password"}   maxLength={6}
+          <TextField isRequired name="password" type={showPassword ? "text" : "password"}   
             validate={(value) => {
           if (value.length < 6) {
             return "Password must be at least 6 characters";
