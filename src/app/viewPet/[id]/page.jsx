@@ -1,12 +1,18 @@
+import { auth } from '@/lib/auth';
 import { Button } from '@heroui/react';
+import { headers } from 'next/headers';
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
 
 const ViewPet = async ({ params }) => {
   const { id } = await params;
+  const{token}= await auth.api.getToken({
+    headers: await headers()
+  })
   const res = await fetch(`http://localhost:8000/pet/${id}`, {
-    cache: 'no-store'
+    cache: 'no-store',
+    authorization:`Bearer ${token}`
   });
   const pet = await res.json();
 
@@ -21,7 +27,7 @@ const ViewPet = async ({ params }) => {
           <div className="relative w-full aspect-[16/10] rounded-[2.5rem] overflow-hidden bg-foreground/5 shadow-2xl border border-foreground/[0.08]">
             <Image
               src={pet.image || "https://images.unsplash.com/photo-1543466835-00a7907e9de1"}
-              alt={pet.petName}
+              alt='pet images'
               fill
               priority
               className="object-cover"
@@ -112,11 +118,11 @@ const ViewPet = async ({ params }) => {
             <div className="flex flex-col sm:flex-row gap-3 pt-2">
             
               
-              <Link href="/dashboard" className="flex-1">
+              <Link href="/dashboard/my-request" className="flex-1">
                 <Button 
                   className="w-full font-bold text-md py-6 rounded-xl bg-[#E04D3C] hover:bg-[#c83a2b] text-white shadow-sm"
                 >
-                  Back to Dashboard
+                  Back to My Request Page
                 </Button>
               </Link>
             </div>

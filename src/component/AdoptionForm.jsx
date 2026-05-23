@@ -1,8 +1,11 @@
 "use client";
+import { authClient } from "@/lib/auth-client";
+import { redirect, useRouter } from "next/navigation";
 import React, { useState } from "react";
 import toast from "react-hot-toast";
 
 const AdoptionForm = ({ pet, user }) => {
+  const router=useRouter()
   const [pickupDate, setPickupDate] = useState("");
   const [message, setMessage] = useState("");
 
@@ -25,19 +28,24 @@ const AdoptionForm = ({ pet, user }) => {
       message,
      
     };
+     const {data:tokenData}=await authClient.token();
 
     try {
-      const res = await fetch(`http://localhost:8000/request`, {
+        const res = await fetch(`http://localhost:8000/request`, {
         method: "POST",
-        headers: { "content-type": "application/json" },
+        headers: { 
+          "content-type": "application/json",
+          authorization:`Bearer ${tokenData?.token}`
+         },
         body: JSON.stringify(adoptionRequestData),
       });
-      const result = await res.json();
+     
 
       if (res.ok) {
         toast.success("Adoption request submitted successfully! 🎉");
         setPickupDate("");
         setMessage("");
+        router.push('/dashboard/my-request');
       } else {
         toast.error("Owner Can not buy own pet!!");
       }

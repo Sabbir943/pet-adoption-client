@@ -7,12 +7,19 @@ import AdoptionForm from '@/component/AdoptionForm';
 
 const petDetails = async ({ params }) => {
   const { id } = await params;
+  const {token}= await auth.api.getToken({
+    headers: await headers()
+  })
+  
 
   // ১. Fetch Pet Data from MongoDB
   const res = await fetch (`http://localhost:8000/pet/${id}`, {
-    cache: 'no-store'
+   headers:{
+    authorization:`Bearer ${token}`
+   }
   });
   const pet = await res.json();
+  
 
   // ২. Fetch User Session
   const session = await auth.api.getSession({

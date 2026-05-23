@@ -26,7 +26,7 @@ const AllPage =() => {
 
     return (
       <div>
-        <div className='flex justify-between gap-3 w-10/12 mx-auto my-10  bg-white dark:bg-zinc-950 border border-foreground/10 p-7 rounded-2xl'>
+        <div className='flex justify-between gap-3 w-10/12 mx-auto my-10  bg-gray-300 text-black dark:bg-zinc-800 border border-foreground/10 p-7 rounded-2xl'>
            <SearchBar setSearch={setSearch} />
         <FilterBar setSpecies={setSpecies} />
         <SortBar setSort={setSort} />

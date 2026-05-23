@@ -3,15 +3,18 @@ import React from "react";
 
 import { AlertDialog, Button } from "@heroui/react";
 import toast from "react-hot-toast";
+import { authClient } from "@/lib/auth-client";
 
 const DeleteDialog = ({ petData }) => {
   
   const handleDelete = async () => {
+    const {data:TokenData}=await authClient.token();
     try {
       const res = await fetch(`http://localhost:8000/pet/${petData?._id}`, {
         method: 'DELETE',
         headers: {
-          'content-type': 'application/json'
+          'content-type': 'application/json',
+           authorization:`Bearer ${TokenData?.token}`
         }
       });
       

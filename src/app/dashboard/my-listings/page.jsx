@@ -12,10 +12,20 @@ const MyListing = async () => {
   const user = session?.user;
 
   if (!user) return null;
-
+  const{token}= await auth.api.getToken({
+    headers: await headers()
+  })
   const res = await fetch(
     `http://localhost:8000/myListing/${user?.email}`,
-    { cache: 'no-store' }
+    {
+       cache: 'no-store',
+       headers:{
+        authorization:`Bearer ${token}`
+       }
+
+
+     },
+   
   );
 
   const data = await res.json();
@@ -47,7 +57,7 @@ const MyListing = async () => {
 
       </div>
 
-      <ListingCard data={data || []} />
+      <ListingCard data={data} />
 
     </main>
   );

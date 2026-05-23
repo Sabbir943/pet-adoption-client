@@ -2,15 +2,22 @@ import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Button } from '@heroui/react';
+import { auth } from '@/lib/auth';
+import { headers } from 'next/headers';
 
 
 
 const OwnerView = async ({ params }) => {
   const { id } = await params;
-
+   const{token}= await auth.api.getToken({
+      headers: await headers()
+    })
   // ১. Fetch Pet Data from MongoDB
   const res = await fetch (`http://localhost:8000/pet/${id}`, {
-    cache: 'no-store'
+    cache: 'no-store',
+    headers:{
+      authorization:`Bearer ${token}`
+    }
   });
   const pet = await res.json();
 
@@ -57,7 +64,7 @@ const OwnerView = async ({ params }) => {
               </span>
             </div>
 
-            {/* Grid Specs */}
+           
             <div className="grid grid-cols-3 gap-4">
               <div className="bg-foreground/[0.02] dark:bg-zinc-900/40 backdrop-blur-md p-4 rounded-2xl border border-foreground/[0.05] text-center">
                 <span className="block text-[10px] text-foreground/40 font-bold uppercase tracking-wider mb-1">Breed</span>
@@ -83,11 +90,11 @@ const OwnerView = async ({ params }) => {
           </div>
         </div>
 
-        {/* RIGHT COLUMN: Sticky Adoption Form (5 Columns) */}
+       
         <div className="lg:col-span-5 lg:sticky lg:top-24">
   <div className="bg-white border border-gray-100 rounded-[2rem] p-6 shadow-md space-y-6">
     
-    {/* Header Section */}
+ 
     <div className="flex items-center gap-3 border-b border-gray-50 pb-4">
       <span className="text-2xl">🏡</span>
       <div>

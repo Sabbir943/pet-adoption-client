@@ -1,4 +1,5 @@
 "use client";
+import { authClient } from "@/lib/auth-client";
 import { PencilToSquare } from "@gravity-ui/icons";
 import { Button, Modal } from "@heroui/react";
 import toast from "react-hot-toast";
@@ -10,10 +11,12 @@ const EditModal = ({ petData }) => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
     const Updatedata = Object.fromEntries(formData.entries());
+    const{data:TokenData}= await authClient.token();
     const res = await fetch(`http://localhost:8000/pet/${petData._id}`, {
       method: 'PATCH',
       headers: {
-        'content-type': 'application/json'
+        'content-type': 'application/json',
+        authorization:`Bearer ${TokenData?.token}`
       },
       body: JSON.stringify(Updatedata)
     });

@@ -1,6 +1,7 @@
 import React from 'react';
 import { AlertDialog, Button } from "@heroui/react";
 import toast from "react-hot-toast";
+import { authClient } from '@/lib/auth-client';
 
 
   
@@ -8,11 +9,13 @@ import toast from "react-hot-toast";
 
 const MyRequestDelete = ({request}) => {
      const handleDelete = async () => {
+      const{data:tokenData}= await authClient.token();
     try {
       const res = await fetch(`http://localhost:8000/myRequest/${request._id}`, {
         method: 'DELETE',
         headers: {
-          'content-type': 'application/json'
+          'content-type': 'application/json',
+           authorization: `Bearer ${tokenData?.token}`
         }
       });
         const result = await res.json();
