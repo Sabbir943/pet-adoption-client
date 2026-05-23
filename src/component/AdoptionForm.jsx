@@ -23,7 +23,7 @@ const AdoptionForm = ({ pet, user }) => {
       ownerEmail: pet.ownerEmail,
       pickupDate,
       message,
-     status: "pending"
+     
     };
 
     try {
@@ -34,12 +34,12 @@ const AdoptionForm = ({ pet, user }) => {
       });
       const result = await res.json();
 
-      if (res.ok && !result.error) {
+      if (res.ok) {
         toast.success("Adoption request submitted successfully! 🎉");
         setPickupDate("");
         setMessage("");
       } else {
-        toast.error(result.error || "Failed to submit request.");
+        toast.error("Owner Can not buy own pet!!");
       }
     } catch (error) {
       toast.error("Server connection failed.");

@@ -63,7 +63,7 @@ const AddPetForm = ({ user }) => {
             <input name="breed" type="text" required placeholder="Golden Retriever" className="w-full px-4 py-2.5 rounded-xl border border-foreground/10 bg-foreground/5 text-sm focus:border-pink-500 focus:outline-none" />
           </div>
           <div className="flex flex-col gap-1">
-            <label className="font-bold text-md text-foreground/70">Age *</label>
+            <label className="font-bold text-md text-foreground/70">Age *(2 Years/ 2 month)</label>
             <input name="age" type="text" required placeholder="2 Years" className="w-full px-4 py-2.5 rounded-xl border border-foreground/10 bg-foreground/5 text-sm focus:border-pink-500 focus:outline-none" />
           </div>
         </div>
