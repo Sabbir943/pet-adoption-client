@@ -11,11 +11,11 @@ const MyRequestDelete = ({request}) => {
      const handleDelete = async () => {
       const{data:tokenData}= await authClient.token();
     try {
-      const res = await fetch(`${process.env.NEXT_SERVER_URL}/myRequest/${request._id}`, {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/myRequest/${request._id}`, {
         method: 'DELETE',
         headers: {
           'content-type': 'application/json',
-           authorization: `Bearer ${tokenData?.token}`
+          //  authorization: `Bearer ${tokenData?.token}`
         }
       });
         const result = await res.json();

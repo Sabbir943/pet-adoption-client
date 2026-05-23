@@ -4,7 +4,7 @@ import PetCard from './PetCard';
 
 const FeaturedPet = async () => {
 
-  const res = await fetch(`${process.env.NEXT_SERVER_URL}/addPets`, {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/addPets`, {
     next: { revalidate: 3600 } 
   });
   const petData = await res.json();

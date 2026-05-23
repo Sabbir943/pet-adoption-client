@@ -10,11 +10,11 @@ const DeleteDialog = ({ petData }) => {
   const handleDelete = async () => {
     const {data:TokenData}=await authClient.token();
     try {
-      const res = await fetch(`${process.env.NEXT_SERVER_URL}/pet/${petData?._id}`, {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/pet/${petData?._id}`, {
         method: 'DELETE',
         headers: {
           'content-type': 'application/json',
-           authorization:`Bearer ${TokenData?.token}`
+          //  authorization:`Bearer ${TokenData?.token}`
         }
       });
       

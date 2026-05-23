@@ -14,7 +14,7 @@ const RequestModal = ({ petId, onClose }) => {
         setLoading(true);
 
         const res = await fetch(
-          `${process.env.NEXT_SERVER_URL}/requests/${petId}`
+          `${process.env.NEXT_PUBLIC_SERVER_URL}/requests/${petId}`
         );
 
         const data = await res.json();
@@ -45,7 +45,7 @@ const RequestModal = ({ petId, onClose }) => {
         await authClient.token();
 
       const res = await fetch(
-        `${process.env.NEXT_SERVER_URL}/approve/${id}`,
+        `${process.env.NEXT_PUBLIC_SERVER_URL}/approve/${id}`,
         {
           method: 'PATCH',
           headers: {
@@ -78,12 +78,12 @@ const RequestModal = ({ petId, onClose }) => {
         await authClient.token();
 
       const res = await fetch(
-        `${process.env.NEXT_SERVER_URL}/reject/${id}`,
+        `${process.env.NEXT_PUBLIC_SERVER_URL}/reject/${id}`,
         {
           method: 'PATCH',
-          headers: {
-            authorization: `Bearer ${TokenData?.token}`,
-          },
+          // headers: {
+          //   authorization: `Bearer ${TokenData?.token}`,
+          // },
         }
       );
 

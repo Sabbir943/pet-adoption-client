@@ -18,12 +18,12 @@ const AddPetForm = ({ user }) => {
       ownerEmail: user?.email,
       status: "Available"
     };
-     const{data:tokenData} = await authClient.token();
-      const res = await fetch(`${process.env.NEXT_SERVER_URL}/addPets`, {
+      const{data:tokenData} = await authClient.token();
+      const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/addPets`, {
       method: "POST",
       headers:{
-     'content-type': 'application/json',  
-      authorization:`Bearer ${tokenData?.token}`
+     'content-type': 'application/json'
+      // authorization:`Bearer ${tokenData?.token}`
       },
       body: JSON.stringify(fullPetData)
     });

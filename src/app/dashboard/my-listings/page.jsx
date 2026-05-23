@@ -16,7 +16,7 @@ const MyListing = async () => {
     headers: await headers()
   })
   const res = await fetch(
-    `${process.env.NEXT_SERVER_URL}/myListing/${user?.email}`,
+    `${process.env.NEXT_PUBLIC_SERVER_URL}/myListing/${user?.email}`,
     {
        cache: 'no-store',
        headers:{

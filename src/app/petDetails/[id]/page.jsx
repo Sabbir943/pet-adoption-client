@@ -13,10 +13,10 @@ const petDetails = async ({ params }) => {
   
 
   // ১. Fetch Pet Data from MongoDB
-  const res = await fetch (`${process.env.NEXT_SERVER_URL}/pet/${id}`, {
-   headers:{
-    authorization:`Bearer ${token}`
-   }
+  const res = await fetch (`${process.env.NEXT_PUBLIC_SERVER_URL}/pet/${id}`, {
+  //  headers:{
+  //   authorization:`Bearer ${token}`
+  //  }
   });
   const pet = await res.json();
   

@@ -12,11 +12,11 @@ const EditModal = ({ petData }) => {
     const formData = new FormData(e.currentTarget);
     const Updatedata = Object.fromEntries(formData.entries());
     const{data:TokenData}= await authClient.token();
-    const res = await fetch(`${process.env.NEXT_SERVER_URL}/pet/${petData._id}`, {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/pet/${petData._id}`, {
       method: 'PATCH',
       headers: {
         'content-type': 'application/json',
-        authorization:`Bearer ${TokenData?.token}`
+        // authorization:`Bearer ${TokenData?.token}`
       },
       body: JSON.stringify(Updatedata)
     });
