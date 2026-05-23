@@ -16,7 +16,7 @@ const MyListing = async () => {
     headers: await headers()
   })
   const res = await fetch(
-    `http://localhost:8000/myListing/${user?.email}`,
+    `${process.env.NEXT_SERVER_URL}/myListing/${user?.email}`,
     {
        cache: 'no-store',
        headers:{

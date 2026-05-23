@@ -19,7 +19,7 @@ const AllPage =() => {
     if (species) params.set('species', species);
     if (sort)    params.set('sort', sort);
 
-    fetch(`http://localhost:8000/addPets?${params}`)
+    fetch(`${process.env.NEXT_SERVER_URL}/addPets?${params}`)
       .then(r => r.json())
       .then(setPets);
   }, [search, species, sort]);

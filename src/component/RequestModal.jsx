@@ -14,7 +14,7 @@ const RequestModal = ({ petId, onClose }) => {
         setLoading(true);
 
         const res = await fetch(
-          `http://localhost:8000/requests/${petId}`
+          `${process.env.NEXT_SERVER_URL}/requests/${petId}`
         );
 
         const data = await res.json();
@@ -45,7 +45,7 @@ const RequestModal = ({ petId, onClose }) => {
         await authClient.token();
 
       const res = await fetch(
-        `http://localhost:8000/approve/${id}`,
+        `${process.env.NEXT_SERVER_URL}/approve/${id}`,
         {
           method: 'PATCH',
           headers: {
@@ -78,7 +78,7 @@ const RequestModal = ({ petId, onClose }) => {
         await authClient.token();
 
       const res = await fetch(
-        `http://localhost:8000/reject/${id}`,
+        `${process.env.NEXT_SERVER_URL}/reject/${id}`,
         {
           method: 'PATCH',
           headers: {

@@ -12,7 +12,7 @@ const EditModal = ({ petData }) => {
     const formData = new FormData(e.currentTarget);
     const Updatedata = Object.fromEntries(formData.entries());
     const{data:TokenData}= await authClient.token();
-    const res = await fetch(`http://localhost:8000/pet/${petData._id}`, {
+    const res = await fetch(`${process.env.NEXT_SERVER_URL}/pet/${petData._id}`, {
       method: 'PATCH',
       headers: {
         'content-type': 'application/json',

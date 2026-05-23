@@ -16,7 +16,7 @@ const Page = async () => {
     headers: await headers()
   })
   const res = await fetch(
-    `http://localhost:8000/myRequest/${user.email}`,
+    `${process.env.NEXT_SERVER_URL}/myRequest/${user.email}`,
     { cache: "no-store" ,
       headers:{
         authorization:`Bearer ${token}`

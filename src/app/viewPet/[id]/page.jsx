@@ -10,7 +10,7 @@ const ViewPet = async ({ params }) => {
   const{token}= await auth.api.getToken({
     headers: await headers()
   })
-  const res = await fetch(`http://localhost:8000/pet/${id}`, {
+  const res = await fetch(`${process.env.NEXT_SERVER_URL}/pet/${id}`, {
     cache: 'no-store',
     authorization:`Bearer ${token}`
   });

@@ -10,7 +10,7 @@ const DeleteDialog = ({ petData }) => {
   const handleDelete = async () => {
     const {data:TokenData}=await authClient.token();
     try {
-      const res = await fetch(`http://localhost:8000/pet/${petData?._id}`, {
+      const res = await fetch(`${process.env.NEXT_SERVER_URL}/pet/${petData?._id}`, {
         method: 'DELETE',
         headers: {
           'content-type': 'application/json',

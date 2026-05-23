@@ -31,7 +31,7 @@ const AdoptionForm = ({ pet, user }) => {
      const {data:tokenData}=await authClient.token();
 
     try {
-        const res = await fetch(`http://localhost:8000/request`, {
+        const res = await fetch(`${process.env.NEXT_SERVER_URL}/request`, {
         method: "POST",
         headers: { 
           "content-type": "application/json",

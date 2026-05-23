@@ -11,7 +11,7 @@ const MyRequestDelete = ({request}) => {
      const handleDelete = async () => {
       const{data:tokenData}= await authClient.token();
     try {
-      const res = await fetch(`http://localhost:8000/myRequest/${request._id}`, {
+      const res = await fetch(`${process.env.NEXT_SERVER_URL}/myRequest/${request._id}`, {
         method: 'DELETE',
         headers: {
           'content-type': 'application/json',

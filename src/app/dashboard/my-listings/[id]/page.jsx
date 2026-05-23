@@ -13,7 +13,7 @@ const OwnerView = async ({ params }) => {
       headers: await headers()
     })
   // ১. Fetch Pet Data from MongoDB
-  const res = await fetch (`http://localhost:8000/pet/${id}`, {
+  const res = await fetch (`${process.env.NEXT_SERVER_URL}/pet/${id}`, {
     cache: 'no-store',
     headers:{
       authorization:`Bearer ${token}`
