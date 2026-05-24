@@ -41,16 +41,16 @@ const RequestModal = ({ petId, onClose }) => {
 
   const handleApprove = async (id) => {
     try {
-      const { data: TokenData } =
-        await authClient.token();
+      // const { data: TokenData } =
+      //   await authClient.token();
 
       const res = await fetch(
         `${process.env.NEXT_PUBLIC_SERVER_URL}/approve/${id}`,
         {
           method: 'PATCH',
-          headers: {
-            authorization: `Bearer ${TokenData?.token}`,
-          },
+          // headers: {
+          //   authorization: `Bearer ${TokenData?.token}`,
+          // },
         }
       );
 
@@ -74,8 +74,8 @@ const RequestModal = ({ petId, onClose }) => {
 
   const handleReject = async (id) => {
     try {
-      const { data: TokenData } =
-        await authClient.token();
+     
+        
 
       const res = await fetch(
         `${process.env.NEXT_PUBLIC_SERVER_URL}/reject/${id}`,

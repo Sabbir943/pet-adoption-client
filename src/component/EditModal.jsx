@@ -11,7 +11,7 @@ const EditModal = ({ petData }) => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
     const Updatedata = Object.fromEntries(formData.entries());
-    const{data:TokenData}= await authClient.token();
+    
     const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/pet/${petData._id}`, {
       method: 'PATCH',
       headers: {

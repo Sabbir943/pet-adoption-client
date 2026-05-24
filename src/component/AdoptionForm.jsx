@@ -28,7 +28,7 @@ const AdoptionForm = ({ pet, user }) => {
       message,
      
     };
-     const {data:tokenData}=await authClient.token();
+    
 
     try {
         const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/request`, {

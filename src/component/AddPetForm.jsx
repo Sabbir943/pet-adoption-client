@@ -18,7 +18,7 @@ const AddPetForm = ({ user }) => {
       ownerEmail: user?.email,
       status: "Available"
     };
-      const{data:tokenData} = await authClient.token();
+     
       const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/addPets`, {
       method: "POST",
       headers:{

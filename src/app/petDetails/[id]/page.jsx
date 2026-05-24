@@ -7,9 +7,9 @@ import AdoptionForm from '@/component/AdoptionForm';
 
 const petDetails = async ({ params }) => {
   const { id } = await params;
-  const {token}= await auth.api.getToken({
-    headers: await headers()
-  })
+  // const {token}= await auth.api.getToken({
+  //   headers: await headers()
+  // })
   
 
   // ১. Fetch Pet Data from MongoDB

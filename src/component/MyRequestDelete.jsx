@@ -9,7 +9,7 @@ import { authClient } from '@/lib/auth-client';
 
 const MyRequestDelete = ({request}) => {
      const handleDelete = async () => {
-      const{data:tokenData}= await authClient.token();
+      
     try {
       const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/myRequest/${request._id}`, {
         method: 'DELETE',

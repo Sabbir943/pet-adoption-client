@@ -8,7 +8,7 @@ import { authClient } from "@/lib/auth-client";
 const DeleteDialog = ({ petData }) => {
   
   const handleDelete = async () => {
-    const {data:TokenData}=await authClient.token();
+   
     try {
       const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/pet/${petData?._id}`, {
         method: 'DELETE',
