@@ -12,15 +12,15 @@ const Page = async () => {
   const user = session?.user;
 
   if (!user) return null;
-  // const {token}= await auth.api.getToken({
-  //   headers: await headers()
-  // })
+  const {token}= await auth.api.getToken({
+    headers: await headers()
+  })
   const res = await fetch(
     `${process.env.NEXT_PUBLIC_SERVER_URL}/myRequest/${user.email}`,
     { cache: "no-store" ,
-      // headers:{
-      //   authorization:`Bearer ${token}`
-      // }
+      headers:{
+        authorization:`Bearer ${token}`
+      }
 
 
     }

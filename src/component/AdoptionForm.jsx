@@ -29,13 +29,14 @@ const AdoptionForm = ({ pet, user }) => {
      
     };
     
-
+   
     try {
+        const {data:tokenData}=await authClient.token();
         const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/request`, {
         method: "POST",
         headers: { 
           "content-type": "application/json",
-          // authorization:`Bearer ${tokenData?.token}`
+          authorization:`Bearer ${tokenData?.token}`
          },
         body: JSON.stringify(adoptionRequestData),
       });
@@ -78,7 +79,7 @@ const AdoptionForm = ({ pet, user }) => {
         {isAdopted ? (
           <button type="button" disabled className="w-full bg-zinc-400 text-white font-bold py-2.5 rounded-xl cursor-not-allowed text-md uppercase">Already Adopted</button>
         ) : (
-          <button type="submit" className="w-full bg-pink-500 hover:bg-pink-600 text-white font-bold py-2.5 rounded-xl transition-all text-md uppercase tracking-wide shadow-md">Submit Application</button>
+          <button type="submit" className="w-full bg-pink-500 hover:cursor-pointer hover:bg-pink-600 text-white font-bold py-2.5 rounded-xl transition-all text-md uppercase tracking-wide shadow-md">Submit Application</button>
         )}
       </form>
     </div>
