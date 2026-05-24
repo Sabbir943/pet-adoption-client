@@ -25,14 +25,21 @@ const AllPage =() => {
   }, [search, species, sort]);
 
     return (
-      <div>
-        <div className='flex justify-between gap-3 w-10/12 mx-auto my-10  bg-gray-300 text-black dark:bg-zinc-800 border border-foreground/10 p-7 rounded-2xl'>
-           <SearchBar setSearch={setSearch} />
-        <FilterBar setSpecies={setSpecies} />
-        <SortBar setSort={setSort} />
+     
+        <div className="w-11/12   mx-auto my-10 p-5 md:p-6 bg-gray-100 text-black dark:bg-zinc-900 border border-gray-200 dark:border-zinc-800 rounded-2xl shadow-sm">
+           <div className="flex w-10/12 mx-auto my-5 flex-col md:flex-row items-stretch md:items-center justify-between gap-4">
+          <div className="w-full md:flex-1">
+                    <SearchBar setSearch={setSearch} />
+                </div>
+                <div className="w-full md:flex-1">
+                    <FilterBar setSpecies={setSpecies} />
+                </div>
+                <div className="w-full md:flex-1">
+                    <SortBar setSort={setSort} />
+                </div>
         </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 w-10/12 mx-auto">
+      <div className="  grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 w-10/12 mx-auto">
         {
             pets.map(pet=><PetCard pet={pet} key={pet._id}/>)
         }
