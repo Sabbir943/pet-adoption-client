@@ -14,7 +14,11 @@ const lato = Lato({
 export const metadata = {
   title: "PawNest",
   description: "Pet Adoption Platform",
+   icons: {
+    icon: "/vercel.png",
+  },
 };
+
 
 export default function RootLayout({ children }) {
   return (
