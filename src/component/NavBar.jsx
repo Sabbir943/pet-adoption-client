@@ -34,8 +34,8 @@ const NavBar = () => {
   const navLinks = [
     { href: "/home", label: "Home", icon: <FaHome /> },
     { href: "/allPets", label: "All Pets", icon: <MdOutlinePets /> },
-    { href: "/dashboard/my-request", label: "My Request", icon: <MdRequestPage /> },
-    { href: "/dashboard/add-pets", label: "Add Pets", icon: <IoAddCircleOutline /> },
+    // { href: "/dashboard/my-request", label: "My Request", icon: <MdRequestPage /> },
+    // { href: "/dashboard/add-pets", label: "Add Pets", icon: <IoAddCircleOutline /> },
   ];
 
   return (
