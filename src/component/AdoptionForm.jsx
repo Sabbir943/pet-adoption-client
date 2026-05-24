@@ -31,12 +31,12 @@ const AdoptionForm = ({ pet, user }) => {
     
    
     try {
-        const {data:tokenData}=await authClient.token();
+        // const {data:tokenData}=await authClient.token();
         const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/request`, {
         method: "POST",
         headers: { 
           "content-type": "application/json",
-          authorization:`Bearer ${tokenData?.token}`
+          // authorization:`Bearer ${tokenData?.token}`
          },
         body: JSON.stringify(adoptionRequestData),
       });

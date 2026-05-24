@@ -22,15 +22,15 @@ export const auth = betterAuth({
             clientSecret:process.env.GOOGLE_CLIENT_SECRET, 
         }, 
     },
-    session:{
-    cookieCache:{
-    enabled:true,
-    strategy:"jwt",
-    maxAge:7*24*60*60
-  }
-    },
-   plugins:[
-  jwt()
-   ]
+  //   session:{
+  //   cookieCache:{
+  //   enabled:true,
+  //   strategy:"jwt",
+  //   maxAge:7*24*60*60
+  // }
+  //   },
+  //  plugins:[
+  // jwt()
+  //  ]
     
 });

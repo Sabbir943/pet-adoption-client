@@ -9,15 +9,15 @@ import { headers } from 'next/headers';
 
 const OwnerView = async ({ params }) => {
   const { id } = await params;
-   const{token}= await auth.api.getToken({
-      headers: await headers()
-    })
+  //  const{token}= await auth.api.getToken({
+  //     headers: await headers()
+  //   })
   // ১. Fetch Pet Data from MongoDB
   const res = await fetch (`${process.env.NEXT_PUBLIC_SERVER_URL}/pet/${id}`, {
     cache: 'no-store',
-    headers:{
-      authorization:`Bearer ${token}`
-    }
+    // headers:{
+    //   authorization:`Bearer ${token}`
+    // }
   });
   const pet = await res.json();
 
